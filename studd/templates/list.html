@@ -1,0 +1,44 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+  {% csrf_token %}
+    <table class="table col-lg-6 col-sm-6 col-12" style="border: 1px solid black;">
+        <thead class="col-lg-6 col-sm-6 col-12">
+          <tr style="border: 1px solid black;">
+            <th scope="col" style="border: 1px solid black;">Sr.No</th>
+            <th scope="col" style="border: 1px solid black;">student_name</th>
+            <th scope="col" style="border: 1px solid black;">student_class</th>
+            <th scope="col" style="border: 1px solid black;">student_roll_no</th>
+            <th scope="col" style="border: 1px solid black;">student_In_time</th>
+            <th scope="col" style="border: 1px solid black;">student_Out_time</th>
+            <th scope="col" style="border: 1px solid black;">student_singnature</th>
+            <th scope="col" style="border: 1px solid black;">student_image</th>
+            <th scope="col" style="border: 1px solid black;">Delete_Entry</th>
+            <th scope="col" style="border: 1px solid black;">Update_Entry</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in listall %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td style="border: 1px solid black;">{{i.student_name}}</td>
+            <td style="border: 1px solid black;">{{i.student_class}}</td>
+            <td style="border: 1px solid black;">{{i.student_roll_no}}</td>
+            <td style="border: 1px solid black;">{{i.student_In_time}}</td>
+            <td style="border: 1px solid black;">{{i.student_Out_time}}</td>
+            <td style="border: 1px solid black;"><img src="/media/{{i.student_singnature}}" style="height:50px"></td>
+            <td style="border: 1px solid black;"><img src="/media/{{i.student_image}}" style="height:50px"></td>
+            <td style="border: 1px solid black;"><a href="/delete/{{i.id}}" class="btn btn-danger">Delete</a></td>
+            <td style="border: 1px solid black;"><a href="/update/{{i.id}}" class="btn btn-success">Update</a></td>
+          </tr>
+          <tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <form class="form-inline">
+        <a href="/studd/" class="btn btn-outline-success m-2" id="back" type="submit">Back</a>
+      </form>
+
+      
+{% endblock %}

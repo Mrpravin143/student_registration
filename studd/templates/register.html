@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+    <form class="col-lg-6 col-sm-6 col-12 mx-auto card p-3 shadow-lg "  method="POST" enctype= "multipart/form-data">
+      {% csrf_token %}
+      <h4>Register</h4>
+      <hr>
+      {% if messages %}
+      <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+      {% endif %}
+      </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">First Name</label>
+          <input type="text" required class="form-control w-75" name="fname" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Last Name</label>
+          <input type="text" required class="form-control w-75" name="lname" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input type="text"  required class="form-control w-75" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" required class="form-control w-75" name="password" id="exampleInputPassword1">
+        </div>
+        <p>You have Already Account<a href="/login-page/">Login</a></p>
+        <button type="submit" class="btn btn-success">Register</button>
+      </form>
+
+{% endblock %}
